@@ -1,6 +1,7 @@
 
-function App() {
 
+function App() {
+  
   return (
     <>
       This reward system
