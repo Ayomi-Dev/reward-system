@@ -9,7 +9,6 @@ export const  AuthForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("clicked")
     isLogin
       ? await signIn(email, password)
       : await signUp(email, password, name)
