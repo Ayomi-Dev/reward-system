@@ -1,9 +1,9 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
-export default {
+const config: Config = {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
     extend: {
@@ -11,7 +11,10 @@ export default {
         primary: "#6C5DD3",
         muted: "#F5F6FA",
         soft: "#9CA3AF",
-      },
-    },
+      }
+    }
   },
-} satisfies Config
+  plugins: [],
+};
+
+export default config;
