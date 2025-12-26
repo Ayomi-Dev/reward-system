@@ -1,5 +1,5 @@
-import { useRewards } from "../../../hooks/useRewards";
-import RewardCard from "../RewardCard";
+import { useRewards } from "../../hooks/useRewards";
+import RewardCard from "../cards/RewardCard";
 
 const RewardSection = () => {
   const { filteredRewards, filter, setFilter, loading } = useRewards();
@@ -31,7 +31,7 @@ const RewardSection = () => {
 
       {!loading && filteredRewards.length === 0 && (
         <p className="text-gray-500 mt-6">
-          No rewards available for this category.
+          No rewards yet.
         </p>
       )}
 

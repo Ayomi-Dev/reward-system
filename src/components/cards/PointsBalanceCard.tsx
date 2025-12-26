@@ -1,5 +1,5 @@
 import { Award } from "lucide-react";
-import { useProfile } from "../../../context/ProfileContext";
+import { useProfile } from "../../context/ProfileContext";
 
 export function PointsBalanceCard() {
   const { profile } = useProfile();

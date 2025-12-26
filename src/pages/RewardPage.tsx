@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { ReferEarnCard } from "../components/ReferEarnCard";
-import { ReferWinCard } from "../components/ReferWinCard";
-import { ShareStackCard } from "../components/ShareStackCard";
+import { ReferEarnCard } from "../components/cards/ReferEarnCard";
+import { ReferWinCard } from "../components/cards/ReferWinCard";
+import { ShareStackCard } from "../components/cards/ShareStackCard";
 import SocialIcons from "../components/SocialIcons";
 import TopBar from "../components/TopBar";
-import RewardSection from "../components/rewards/redeem-rewards/RewardSection";
-import EarnPointsSection from "../components/rewards/earn-points/EarnPointsSection";
+import RewardSection from "../components/sections/RewardSection";
+import EarnPointsSection from "../components/sections/EarnPointsSection";
 
- 
+
 export const RewardPage = () => {
     const [tab, setTab] = useState<"earn" | "redeem">("earn");
 

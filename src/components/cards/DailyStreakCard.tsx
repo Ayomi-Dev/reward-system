@@ -1,6 +1,6 @@
 import {  CalendarCheck, CloudLightningIcon } from "lucide-react";
-import { useDailyCheckIn } from "../../../hooks/useClaimDailyRewards";
-import { useProfile } from "../../../context/ProfileContext";
+import { useProfile } from "../../context/ProfileContext";
+import { useDailyCheckIn } from "../../hooks/useClaimDailyRewards";
 
 
 export function DailyStreakCard() {

@@ -1,6 +1,6 @@
-import { DailyStreakCard } from "./DailyStreakCard"
-import { FeaturedCard } from "./FeaturedCard"
-import { PointsBalanceCard } from "./PointsBalanceCard"
+import { DailyStreakCard } from "../cards/DailyStreakCard"
+import { FeaturedCard } from "../cards/FeaturedCard"
+import { PointsBalanceCard } from "../cards/PointsBalanceCard"
 
 const EarnPointsSection = () => {
   return (
