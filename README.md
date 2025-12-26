@@ -1,73 +1,128 @@
-# React + TypeScript + Vite
+# Flowva Rewards Page – Technical Assessment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project recreates the **Rewards page** of the Flowva platform with a focus on
+**UI accuracy, real Supabase usage, clean architecture, and correct business logic**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## React Compiler
+- **Frontend:** React + TypeScript + Tailwind CSS
+- **Backend & DB:** Supabase (Auth, Database, RPC)
+- **State:** React Context + custom hooks
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Core Features Implemented
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Authentication
+- Supabase email/password authentication
+- Auth state managed via `AuthContext`
+- Profile data fetched separately via `ProfileContext`
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Rewards System
+- Rewards fetched from Supabase and displayed with locked/unlocked states
+- Rewards automatically unlock when user points meet requirements
+- User-reward relationship handled via `user_rewards` table
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Daily Check-In
+- Daily streak logic with:
+  - Consecutive day tracking
+  - Auto-reset on missed day
+  - One claim per calendar day
+- Points awarded via secure RPC
+- UI updates immediately after successful check-in
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Redeem Rewards Tab
+- Lists user rewards by status (locked / unlocked / redeemed)
+- Backend-controlled transitions to prevent tampering
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Database & Backend Design
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Key Tables
+- `profiles` – user points & metadata
+- `rewards` – static reward definitions
+- `user_rewards` – per-user reward state
+- `daily_streaks` – streak tracking
+
+### RPC Functions
+- `check_in_daily_streak()` – handles daily claim logic
+- `unlock_rewards_if_eligible()` – auto-unlocks rewards when points increase
+
+### Security
+- Row Level Security enabled on all user-scoped tables
+- Users can only read their own data
+- All mutations handled via RPCs (no direct client writes)
+
+---
+
+## UI Decisions
+
+- Matched spacing, colors, typography, and iconography to the provided design
+- Reward icons treated as images (not SVG icons) to match visual style
+- Loading, empty, and error states handled explicitly
+
+---
+
+## Assumptions & Trade-Offs
+
+- Rewards unlock automatically but redemption is not triggered by UI clicks
+  (matches observed platform behavior)
+- Icons are referenced via stored image paths instead of embedded SVGs
+- Backend enforces all reward logic for security and data integrity
+
+
+## Assumptions Made
+
+### Reward redemption UI is not exposed
+
+- The provided design does not show a redeem interaction 
+- Therefore, full redemption flows are implemented at the data level but not surfaced in the UI
+
+### Points unlock rewards but do not auto-redeem
+
+- Unlocking and redeeming are treated as separate concerns
+
+- This mirrors common real-world reward systems
+
+### Exact copywriting may differ slightly
+
+- Text content was aligned as closely as possible with the provided UI
+
+- Priority was given to structure and behavior over exact wording
+
+## Trade-offs & Reasoning
+### Why not manage streak logic in React?
+
+- Date-based logic is error-prone on the client
+
+- Timezone differences introduce bugs
+
+- Backend enforcement is safer and more scalable
+
+### Why Context instead of local state?
+
+- Avoids duplicated data sources
+
+- Ensures instant UI updates after mutations
+
+- Simplifies mental model for reviewers
+
+### Why not over-engineer reward redemption?
+
+- No visible UX path for redemption in the provided design
+
+- Implementing unused features adds unnecessary complexity
+
+- Backend support exists if the feature is later exposed
+---
+
+## How to Run
+
+1. Clone the repo
+2. Add Supabase keys to `.env`
+3. Run `npm install`
+4. Start with `npm run dev`
+
