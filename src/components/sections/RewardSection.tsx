@@ -11,7 +11,7 @@ const RewardSection = () => {
   ];
 
   return (
-    <section>
+    <section className="w-full">
       <h2 className="text-lg md:text-2xl my-3 text-black border-l-4 border-[#9301fe] pl-3 font-semibold">
         Redeem Your Points
       </h2>
@@ -40,7 +40,7 @@ const RewardSection = () => {
       ))}
       </div>
 
-      <div className="grid gap-6 grid-cols-3 mt-6 items-stretch">
+      <div className="grid gap-6 w-full grid-cols-[repeat(auto-fit,minmax(300px,1fr))] mt-6 items-stretch ">
         {filteredRewards.map(reward => (
           <RewardCard key={reward.id} reward={reward} />
         ))}

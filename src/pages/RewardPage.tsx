@@ -25,7 +25,7 @@ export const RewardPage = ({ toggleSideBar} : { toggleSideBar: () => void}) => {
     }
 
   return (
-    <main className="relative bg-gray-50 flex-1 lg:ml-60">
+    <section className="relative bg-gray-50 flex-1 lg:ml-60">
         <TopBar  toggleSideBar={toggleSideBar}/>
         <div className="px-5 lg:px-8">
             <p className="text-gray-600 block md:hidden py-2">Earn points, unlock rewards, and celebrate your progress!</p>
@@ -61,6 +61,6 @@ export const RewardPage = ({ toggleSideBar} : { toggleSideBar: () => void}) => {
             { showStackModal && <ShareStackModal toggleStackShareModal={toggleStackShareModal} />}
 
         </div>
-    </main>
+    </section>
   )
 }

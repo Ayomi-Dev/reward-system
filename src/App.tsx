@@ -32,7 +32,7 @@ function App() {
 
 
   return(
-    <div className="flex flex-col relative md:flex-row min-h-screen w-full">
+    <div className="flex flex-col relative md:flex-row min-h-screen w-full border border-blue-500">
       {isSidebarOpen && (
         <div
           className="fixed inset-0 z-40 bg-black/40 md:hidden"
@@ -42,7 +42,7 @@ function App() {
     
 
       {user ? 
-        <main className="flex">
+        <main className="flex w-full">
           <SideBar isSidebarOpen={isSidebarOpen} toggleSideBar={toggleSideBar} />
           <RewardPage toggleSideBar={toggleSideBar} />
         </main>
