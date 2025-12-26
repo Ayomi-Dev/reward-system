@@ -1,5 +1,7 @@
 import { Compass, CreditCard, Gem, HomeIcon, Layers3,  PackageOpen, UserCog, X,  } from 'lucide-react';
 import Logo from '../assets/flowva_logo-xVpZI3-U.png';
+import { useState } from 'react';
+import { signOut } from '../lib/auth';
 
 
 const SideBar = ({isSidebarOpen, toggleSideBar }:
@@ -7,6 +9,13 @@ const SideBar = ({isSidebarOpen, toggleSideBar }:
         isSidebarOpen: boolean,
         toggleSideBar: () => void
     }) => {
+
+    const [isProfileOpen, setIsProfileOpen] = useState(false);
+
+    const signOutUser = async () => {
+        await signOut()
+    }
+
   return (
     <aside className={`
         fixed 
@@ -62,22 +71,50 @@ const SideBar = ({isSidebarOpen, toggleSideBar }:
             
             </nav>
             <div className="mt-auto py-3 relative flex justify-center">
-                <div className="absolute top-0 left-4 right-4 border-t border-[#64748B]">
-                </div>
-                <div className="w-full flex items-center justify-between px-4">
-                    <button className="flex items-center border-none cursor-pointer">
-                        <div className="w-10 h-10 relative overflow-hidden rounded-full font-semibold mr-3 flex items-center justify-center  text-[#9013FE] bg-[#E9D4FF]">
-                            <img src="https://lh3.googleusercontent.com/a/ACg8ocJWQIppfHgr7DzPTups58ZiJ-ipXRTnzJnTWwHLBPcVedW0gQ=s96-c" alt="User avatar" className="h-full w-full rounded-full object-cover" />
-                        </div>
-                        <div className="text-start">
-                            <span className="text-[0.9rem] font-semibold">Ayo</span>
-                            <p className="text-[0.8rem] text-[#718096] truncate overflow-x-hidden max-w-38.25">
-                                ayomideolakunlea1@gmail.com
-                            </p>
-                        </div>
-                    </button>
-                </div>
-            </div>
+        <div className="absolute top-0 left-4 right-4 border-t border-[#64748B]" />
+
+        <div className="w-full flex items-center justify-between px-4">
+    <button
+      onClick={() => setIsProfileOpen(prev => !prev)}
+      className="flex items-center border-none cursor-pointer w-full"
+    >
+      <div className="w-10 h-10 relative overflow-hidden rounded-full mr-3 flex items-center justify-center bg-[#E9D4FF]">
+        <img
+          src="https://lh3.googleusercontent.com/a/ACg8ocJWQIppfHgr7DzPTups58ZiJ-ipXRTnzJnTWwHLBPcVedW0gQ=s96-c"
+          alt="User avatar"
+          className="h-full w-full rounded-full object-cover"
+        />
+      </div>
+
+      <div className="text-start flex-1">
+        <span className="text-[0.9rem] font-semibold">Ayo</span>
+        <p className="text-[0.8rem] text-[#718096] truncate max-w-40">
+          ayomideolakunlea1@gmail.com
+        </p>
+      </div>
+    </button>
+        </div>
+
+        {isProfileOpen && (
+      
+
+      <div className="absolute bottom-16 left-4 right-4 z-50 bg-white rounded-xl shadow-lg border border-black/10 overflow-hidden animate-in fade-in zoom-in-95">
+        <ul className="py-2">
+          <li className="px-4 py-2 text-sm cursor-pointer hover:bg-gray-100">
+            Feedback
+          </li>
+          <li className="px-4 py-2 text-sm cursor-pointer hover:bg-gray-100">
+            Support
+          </li>
+          <li className="my-1 border-t border-gray-200" />
+          <li className="px-4 py-2 text-sm cursor-pointer text-red-600 hover:bg-red-50" onClick={signOutUser}>
+            Logout
+          </li>
+        </ul>
+      </div>
+        )}
+        </div>
+
         </div>
     </aside>
   )

@@ -12,8 +12,8 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-linear-to-br from-purple-700 via-purple-600 to-purple-500">
-      <div className="w-full max-w-md bg-white rounded-xl shadow-xl px-7 py-6">
+    <div className="min-h-screen p-5 w-full flex items-center justify-center bg-linear-to-br from-purple-700 via-purple-600 to-purple-500">
+      <div className="max-w-md lg:p-10 bg-white rounded-xl shadow-xl mx-auto p-5">
         
         <h1 className="text-2xl font-bold text-center text-purple-700">
           Log in to flowva
