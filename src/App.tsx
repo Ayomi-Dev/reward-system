@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { AuthForm } from "./components/AuthForm"
 import SideBar from "./components/SideBar"
 import { useAuth } from "./context/AuthContext"
 import { RewardPage } from "./pages/RewardPage"
+import LoginPage from "./components/AuthForm";
 
 function App() {
 
@@ -39,10 +39,16 @@ function App() {
           onClick={() => setIsSidebarOpen(false)}
         />
       )}
-      <SideBar isSidebarOpen={isSidebarOpen} toggleSideBar={toggleSideBar} />
     
 
-      {user ? <RewardPage toggleSideBar={toggleSideBar} /> : <AuthForm />}
+      {user ? 
+        <main className="flex">
+          <SideBar isSidebarOpen={isSidebarOpen} toggleSideBar={toggleSideBar} />
+          <RewardPage toggleSideBar={toggleSideBar} />
+        </main>
+       : 
+        <LoginPage />}
+      
     </div>
   )
   

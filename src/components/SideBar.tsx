@@ -65,7 +65,7 @@ const SideBar = ({isSidebarOpen, toggleSideBar }:
                 <div className="absolute top-0 left-4 right-4 border-t border-[#64748B]">
                 </div>
                 <div className="w-full flex items-center justify-between px-4">
-                    <button className="flex items-center border-none">
+                    <button className="flex items-center border-none cursor-pointer">
                         <div className="w-10 h-10 relative overflow-hidden rounded-full font-semibold mr-3 flex items-center justify-center  text-[#9013FE] bg-[#E9D4FF]">
                             <img src="https://lh3.googleusercontent.com/a/ACg8ocJWQIppfHgr7DzPTups58ZiJ-ipXRTnzJnTWwHLBPcVedW0gQ=s96-c" alt="User avatar" className="h-full w-full rounded-full object-cover" />
                         </div>

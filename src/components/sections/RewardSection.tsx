@@ -40,7 +40,7 @@ const RewardSection = () => {
       ))}
       </div>
 
-      <div className="grid gap-6 grid-cols-[repeat(auto-fill,minmax(300px,1fr))] mt-6 items-stretch">
+      <div className="grid gap-6 grid-cols-3 mt-6 items-stretch">
         {filteredRewards.map(reward => (
           <RewardCard key={reward.id} reward={reward} />
         ))}
