@@ -1,7 +1,9 @@
 import { Award } from "lucide-react";
+import { useProfile } from "../../../context/ProfileContext";
 
 export function PointsBalanceCard() {
-  const points = 15;
+  const { profile, loading} = useProfile();
+  // console.log(userProfile)
   const goal = 5000;
 
   return (
@@ -16,7 +18,7 @@ export function PointsBalanceCard() {
 
       <div className="mt-6 flex items-center justify-between">
         <span className="text-4xl font-bold text-[#9031fe]">
-          {points}
+          {profile?.points ?? 0}
         </span>
         <div className="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center">
           ⭐
@@ -26,13 +28,13 @@ export function PointsBalanceCard() {
       <div className="mt-4">
         <div className="flex justify-between text-sm text-gray-500 mb-1">
           <span>Progress to $5 Gift Card</span>
-          <span>{points}/{goal}</span>
+          <span>{profile?.points ?? 0}/{goal}</span>
         </div>
 
         <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
           <div
             className="h-full bg-purple-500 rounded-full"
-            style={{ width: `${(points / goal) * 100}%` }}
+            style={{ width: `${(profile?.points ?? 0/ goal) * 100}%` }}
           />
         </div>
       </div>
