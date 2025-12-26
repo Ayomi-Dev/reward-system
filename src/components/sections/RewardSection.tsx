@@ -2,7 +2,13 @@ import { useRewards } from "../../hooks/useRewards";
 import RewardCard from "../cards/RewardCard";
 
 const RewardSection = () => {
-  const { filteredRewards, filter, setFilter, loading } = useRewards();
+  const { filteredRewards, filter, setFilter, rewardCounts } = useRewards();
+  const tabs: { key: typeof filter; label: string }[] = [ //transforms filter keys/values into user-friendly labels for tab display
+    { key: "all", label: "All Rewards" },
+    { key: "unlocked", label: "Unlocked" },
+    { key: "locked", label: "Locked" },
+    { key: "coming-soon", label: "Coming Soon" },
+  ];
 
   return (
     <section>
@@ -11,31 +17,30 @@ const RewardSection = () => {
       </h2>
 
       <div className="flex items-center gap-4 pb-4">
-        {["all-rewards", "unlocked", "locked", "coming-soon"].map(tab => (
-          <span
-            key={tab}
-            onClick={() => setFilter(tab as any)}
-            className={`py-3 px-4 rounded-t-xl cursor-pointer transition-all ${
-              filter === tab
-                ? "text-[#9301fe] bg-purple-50 border-b-3 border-[#9301fe]"
-                : "text-gray-500"
-            }`}
-          >
-            {/* capitalizes the first letter of each word */}
-            {tab.replace("-", " ").split(" ").map(t => t.charAt(0).toUpperCase() + t.slice(1)).join(" ")} 
+      {tabs.map(tab => (
+        <div 
+          key={tab.key}
+           className={`cursor-pointer px-4 py-3 rounded-t-xl flex gap-2 ${
+            filter === tab.key
+            ? "text-[#9301fe] bg-purple-50 border-b-3 border-[#9301fe]"
+            : "text-gray-500"
+          }`}
+          onClick={() => setFilter(tab.key)}
+         
+        >
+          <span>
+            {tab.label}
           </span>
-        ))}
+          <span className={`text-xs rounded-full w-5 h-5 flex justify-center items-center bg-[#9031fe]/10 font-semibold 
+            ${tab.key !== filter ? "bg-gray-100 text-gray-300": ""}`
+          }>
+            {rewardCounts[tab.key]}
+          </span>
+        </div>
+      ))}
       </div>
 
-      {loading && <p>Loading rewards...</p>}
-
-      {!loading && filteredRewards.length === 0 && (
-        <p className="text-gray-500 mt-6">
-          No rewards yet.
-        </p>
-      )}
-
-      <div className="grid gap-6 grid-cols-[repeat(auto-fill,minmax(300px,1fr))] mt-6">
+      <div className="grid gap-6 grid-cols-[repeat(auto-fill,minmax(300px,1fr))] mt-6 items-stretch">
         {filteredRewards.map(reward => (
           <RewardCard key={reward.id} reward={reward} />
         ))}

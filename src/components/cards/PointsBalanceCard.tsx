@@ -34,7 +34,7 @@ export function PointsBalanceCard() {
         <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
           <div
             className="h-full bg-purple-500 rounded-full"
-            style={{ width: `${(profile?.points ?? 0/ goal) * 100}%` }}
+            style={{ width: `${(profile?.points / goal) * 100}%` }}
           />
         </div>
       </div>

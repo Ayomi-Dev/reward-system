@@ -4,7 +4,7 @@ export function ReferEarnCard() {
   const referralLink = "https://app.flowvahub.com/signup/?ref=ayo4071";
 
   return (
-    <div className="mt-10 bg-[#F7F8FC] overflow-hidden">
+    <div className="bg-[#F7F8FC] overflow-hidden">
       <div className="flex bg-[#eef2ff] rounded-t-2xl p-4 items-center gap-2 text-sm font-medium text-gray-700">
         <Users className="text-purple-500" />
         <div className="block">
@@ -29,7 +29,7 @@ export function ReferEarnCard() {
         </div>
       </div>
 
-      <div className="mt-6 bg-purple-50 p-4">
+      <div className="mt-6 bg-purple-50 p-4 w-[97%] mx-auto rounded-lg]">
         <label className="text-sm text-gray-700">
           Your personal referral link:
         </label>

@@ -1,4 +1,4 @@
-import { Compass, CreditCard, HomeIcon, Library, SettingsIcon, SquareStackIcon, Stone,  } from 'lucide-react';
+import { Compass, CreditCard, Gem, HomeIcon, Layers3,  PackageOpen, UserCog,  } from 'lucide-react';
 import Logo from '../assets/flowva_logo-xVpZI3-U.png';
 const SideBar = () => {
   return (
@@ -18,11 +18,11 @@ const SideBar = () => {
                         <span className="tracking-wide truncate">Discover</span>
                     </li>
                     <li className="flex items-center gap-3 px-4 p-3 mb-2 rounded-lg cursor-pointer  duration-200 transition-all text-black hover:bg-[rgba(144,19,254,0.1)] hover:text-[#9013FE]">
-                        <Library className='w-4 h-4 text-black font-bold stroke-current' />
+                        <PackageOpen className='w-4 h-4 text-black font-bold stroke-current' />
                         <span className="tracking-wide truncate">Library</span>
                     </li>
                     <li className="flex items-center gap-3 px-4 p-3 mb-2 rounded-lg cursor-pointer  duration-200 transition-all text-black hover:bg-[rgba(144,19,254,0.1)] hover:text-[#9013FE]">
-                        <SquareStackIcon className='w-4 h-4 text-black font-bold stroke-current' />
+                        <Layers3 className='w-4 h-4 text-black font-bold stroke-current' />
                         <span className="tracking-wide truncate">Tech Stack</span>
                     </li>
                     <li className="flex items-center gap-3 px-4 p-3 mb-2 rounded-lg cursor-pointer  duration-200 transition-all text-black hover:bg-[rgba(144,19,254,0.1)] hover:text-[#9013FE]">
@@ -30,11 +30,11 @@ const SideBar = () => {
                         <span className="tracking-wide truncate">Subscriptions</span>
                     </li>
                     <li className="flex items-center gap-3 px-4 p-3 mb-2 rounded-lg cursor-pointer  duration-200 transition-all bg-[rgba(144,19,254,0.2)] text-[#9013FE]">
-                        <Stone className='w-4 h-4 text-black font-bold stroke-current' />
+                        <Gem className='w-4 h-4 text-black font-bold stroke-current' />
                         <span className="tracking-wide truncate">Rewards Hub</span>
                     </li>
                     <li className="flex items-center gap-3 px-4 p-3 mb-2 rounded-lg cursor-pointer  duration-200 transition-all text-black hover:bg-[rgba(144,19,254,0.1)] hover:text-[#9013FE]">
-                        <SettingsIcon className='w-4 h-4 text-black font-bold stroke-current' />
+                        <UserCog className='w-4 h-4 text-black font-bold stroke-current' />
                         <span className="tracking-wide truncate">Settings</span>
                     </li>
                 </ul>

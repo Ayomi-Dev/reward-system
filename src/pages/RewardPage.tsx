@@ -6,6 +6,7 @@ import ReferralSection from "../components/sections/ReferralSection";
 import EarnMorePointsSection from "../components/sections/EarnMorePointsSection";
 import RewardSuccessModal from "../components/RewardSuccessModal";
 import { useDailyCheckIn } from "../hooks/useClaimDailyRewards";
+import ShareStackModal from "../components/modals/ShareStackModal";
 
 
 export const RewardPage = () => {
@@ -36,18 +37,22 @@ export const RewardPage = () => {
         </div>
         
         { tab === "redeem" ? 
-            <RewardSection /> :
+         <>
+            <RewardSection /> 
+         </> :
          tab === "earn" && 
-            <EarnPointsSection checkIn={claimDailyPoints} />
+            <>
+                <EarnPointsSection checkIn={claimDailyPoints} />
+                <EarnMorePointsSection />
+                <ReferralSection />
+            </>
         }
         
-        <EarnMorePointsSection />
 
-        <ReferralSection />
 
         { showSuccessModal && <RewardSuccessModal points={5} onCloseModal={onCloseModal} /> }
 
-        
+        <ShareStackModal />
     </main>
   )
 }
