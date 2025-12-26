@@ -12,12 +12,16 @@ import ShareStackModal from "../components/modals/ShareStackModal";
 export const RewardPage = () => {
     const [tab, setTab] = useState<"earn" | "redeem">("earn");
     const { showSuccessModal, claimDailyPoints, setShowSuccessModal} = useDailyCheckIn();
+    const [ showStackModal, setShowStackModal] = useState(false)
 
     const handleTabClick = (selectedTab: "earn" | "redeem") => {
         setTab(selectedTab)
     }
-    const onCloseModal = ( ) => {
+    const onCloseModal = () => {
         setShowSuccessModal(false)
+    }
+    const toggleStackShareModal = () => {
+         setShowStackModal(!showStackModal)
     }
 
   return (
@@ -43,7 +47,7 @@ export const RewardPage = () => {
          tab === "earn" && 
             <>
                 <EarnPointsSection checkIn={claimDailyPoints} />
-                <EarnMorePointsSection />
+                <EarnMorePointsSection showStackModal={showStackModal} toggleStackShareModal={toggleStackShareModal} />
                 <ReferralSection />
             </>
         }
@@ -52,7 +56,7 @@ export const RewardPage = () => {
 
         { showSuccessModal && <RewardSuccessModal points={5} onCloseModal={onCloseModal} /> }
 
-        <ShareStackModal />
+        { showStackModal && <ShareStackModal toggleStackShareModal={toggleStackShareModal} />}
     </main>
   )
 }

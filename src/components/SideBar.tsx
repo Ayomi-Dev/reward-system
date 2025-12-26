@@ -1,5 +1,7 @@
 import { Compass, CreditCard, Gem, HomeIcon, Layers3,  PackageOpen, UserCog,  } from 'lucide-react';
 import Logo from '../assets/flowva_logo-xVpZI3-U.png';
+
+
 const SideBar = () => {
   return (
     <aside className="w-72 hidden overflow-x-hidden md:flex flex-col h-screen bg-white shadow-md border-r border-black/10 text-black font-sans">

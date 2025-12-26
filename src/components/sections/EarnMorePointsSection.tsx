@@ -1,7 +1,11 @@
 import { ReferWinCard } from '../cards/ReferWinCard'
 import { ShareStackCard } from '../cards/ShareStackCard'
 
-const EarnMorePointsSection = () => {
+const EarnMorePointsSection = ({ toggleStackShareModal} : 
+  { 
+    showStackModal: boolean,
+    toggleStackShareModal: () => void
+  }) => {
   return (
     <section>
       <div className="mt-10">
@@ -10,7 +14,7 @@ const EarnMorePointsSection = () => {
         </h2> 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <ReferWinCard />
-          <ShareStackCard/>
+          <ShareStackCard toggleStackShareModal={ toggleStackShareModal }/>
         </div>
       </div>
 

@@ -1,7 +1,6 @@
-import { Delete, FileStack, Layers, School, X } from 'lucide-react'
-import React from 'react'
+import { Layers, X } from 'lucide-react'
 
-const ShareStackModal = () => {
+const ShareStackModal = ({toggleStackShareModal}: {toggleStackShareModal: ()=> void}) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
       <div className="w-95 rounded-2xl bg-white p-6 relative text-center shadow-xl animate-scaleIn">
@@ -20,7 +19,10 @@ const ShareStackModal = () => {
           You have no stack created yet, go to Tech Stack to create one.
         </p>
 
-       <div className="absolute top-4 right-2 w-8 h-8 flex cursor-pointer items-center justify-center hover:bg-gray-100 rounded-md">
+       <div className="absolute top-4 right-2 w-8 h-8 flex 
+        cursor-pointer items-center justify-center hover:bg-gray-100 rounded-md"
+            onClick={toggleStackShareModal}
+        >
         <X  className='w-5 h-5' />
        </div>
 
