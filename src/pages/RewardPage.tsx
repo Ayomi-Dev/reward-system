@@ -1,17 +1,14 @@
 import { useState } from "react";
 import { ReferEarnCard } from "../components/ReferEarnCard";
 import { ReferWinCard } from "../components/ReferWinCard";
-import { DailyStreakCard } from "../components/rewards/earn-points/DailyStreakCard";
-import { FeaturedCard } from "../components/rewards/earn-points/FeaturedCard";
-import { PointsBalanceCard } from "../components/rewards/earn-points/PointsBalanceCard";
 import { ShareStackCard } from "../components/ShareStackCard";
 import SocialIcons from "../components/SocialIcons";
-import { useAuth } from "../context/AuthContext"
 import TopBar from "../components/TopBar";
+import RewardSection from "../components/rewards/redeem-rewards/RewardSection";
+import EarnPointsSection from "../components/rewards/earn-points/EarnPointsSection";
 
  
 export const RewardPage = () => {
-    const { user } = useAuth();
     const [tab, setTab] = useState<"earn" | "redeem">("earn");
 
     const handleTabClick = (selectedTab: "earn" | "redeem") => {
@@ -33,17 +30,10 @@ export const RewardPage = () => {
                 Redeem Rewards
             </span>
         </div>
-        <section >
-            <h2 className=" text-lg md:text-2xl my-3 text-black border border-l-4 border-t-0 border-b-0 border-r-0 border-[#9301fe] pl-3 font-semibold">
-                Your Rewards Journey
-            </h2>
-            <div className="grid grid-col-1 md:grid-cols-3 gap-6">
-                <PointsBalanceCard />
-                <DailyStreakCard />
-                <FeaturedCard />
-            </div>
-        </section>
+        
 
+        { tab === "redeem" ? <RewardSection /> : tab === "earn" && <EarnPointsSection />}
+        
         <section>
             <div className="mt-10">
                 <h2 className="text-lg md:text-2xl my-3 text-black border border-l-4 border-t-0 border-b-0 border-r-0 border-[#9301fe] pl-3 font-semibold">

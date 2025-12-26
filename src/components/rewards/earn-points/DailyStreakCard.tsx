@@ -9,13 +9,12 @@ export function DailyStreakCard() {
   const today = new Date().toISOString().split('T')[0] //converts date to Y-M-D Format
   
  
-  const { claimDailyReward, loading} = useDailyCheckIn();
+  const { claimDailyReward, loading } = useDailyCheckIn();
   const { profile } = useProfile();
   const checkedInToday = profile?.last_checkin === today //controls button state to disable if user already checks in
   
   const handleDailyReward = () => {
     claimDailyReward();
-    console.log(profile)
   }
 
   return (
@@ -53,11 +52,20 @@ export function DailyStreakCard() {
       </p>
 
       <button className={`mt-4 flex gap-2 justify-center items-center w-full py-2 rounded-full text-white bg-[#930ef1] text-sm font-medium 
-      ` }
-        onClick={handleDailyReward} 
+       ${checkedInToday
+      ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+      : 'bg-primary text-white cursor-pointer'}` }
+        onClick={handleDailyReward} disabled={checkedInToday}
       >
-        <CloudLightningIcon className="w-6 h-6" /> 
-        <span>{loading? "Claiming..." : "Claim Today's Points"}</span>
+        {loading ? "" : <CloudLightningIcon className="w-6 h-6" />  }
+        
+        {loading ? 
+          <span>Claiming...</span> 
+          : checkedInToday ? 
+          <span>Claimed Today!</span> 
+          : 
+          <span>Claim Today's Points</span>
+        }
       </button>
     </div>
   );

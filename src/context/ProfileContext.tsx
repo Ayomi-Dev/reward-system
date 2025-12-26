@@ -16,20 +16,20 @@ export const ProfileProvider = ({ children }: { children: React.ReactNode }) => 
   const [loading, setLoading] = useState(false)
 
   const fetchProfile = async () => {
-    if (!user) return
+    if (!user) return  //if no user is signed in, exits the function
 
     setLoading(true)
     const { data, error } = await supabase
-      .from('profiles')
+      .from('profiles') //queries supabase db and fetches the profile data for the signed in user
       .select('*')
-      .eq('id', user.id)
+      .eq('id', user.id) //filters the list of profiles in the db and returns the one that matches the id of the signed in user
       .single()
 
     if (!error) setProfile(data)
     setLoading(false)
   }
 
-  useEffect(() => {
+  useEffect(() => { //reruns the fetchprofile function and updates the profile whenever the user state changes
     if (user) {
       fetchProfile()
     } else {

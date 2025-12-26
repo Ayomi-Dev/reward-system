@@ -2,7 +2,7 @@ import { Award } from "lucide-react";
 import { useProfile } from "../../../context/ProfileContext";
 
 export function PointsBalanceCard() {
-  const { profile, loading} = useProfile();
+  const { profile } = useProfile();
   // console.log(userProfile)
   const goal = 5000;
 
