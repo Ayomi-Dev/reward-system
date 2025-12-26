@@ -1,18 +1,22 @@
 import { useState } from "react";
-import { ReferEarnCard } from "../components/cards/ReferEarnCard";
-import { ReferWinCard } from "../components/cards/ReferWinCard";
-import { ShareStackCard } from "../components/cards/ShareStackCard";
-import SocialIcons from "../components/SocialIcons";
 import TopBar from "../components/TopBar";
 import RewardSection from "../components/sections/RewardSection";
 import EarnPointsSection from "../components/sections/EarnPointsSection";
+import ReferralSection from "../components/sections/ReferralSection";
+import EarnMorePointsSection from "../components/sections/EarnMorePointsSection";
+import RewardSuccessModal from "../components/RewardSuccessModal";
+import { useDailyCheckIn } from "../hooks/useClaimDailyRewards";
 
 
 export const RewardPage = () => {
     const [tab, setTab] = useState<"earn" | "redeem">("earn");
+    const { showSuccessModal, claimDailyPoints, setShowSuccessModal} = useDailyCheckIn();
 
     const handleTabClick = (selectedTab: "earn" | "redeem") => {
         setTab(selectedTab)
+    }
+    const onCloseModal = ( ) => {
+        setShowSuccessModal(false)
     }
 
   return (
@@ -31,31 +35,19 @@ export const RewardPage = () => {
             </span>
         </div>
         
-
-        { tab === "redeem" ? <RewardSection /> : tab === "earn" && <EarnPointsSection />}
+        { tab === "redeem" ? 
+            <RewardSection /> :
+         tab === "earn" && 
+            <EarnPointsSection checkIn={claimDailyPoints} />
+        }
         
-        <section>
-            <div className="mt-10">
-                <h2 className="text-lg md:text-2xl my-3 text-black border border-l-4 border-t-0 border-b-0 border-r-0 border-[#9301fe] pl-3 font-semibold">
-                    Earn More Points
-                </h2> 
+        <EarnMorePointsSection />
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <ReferWinCard />
-                  <ShareStackCard />
-                </div>
-            </div>
+        <ReferralSection />
 
-        </section>
+        { showSuccessModal && <RewardSuccessModal points={5} onCloseModal={onCloseModal} /> }
 
-        <section className="space-y-6">
-            <h2 className="text-lg md:text-2xl my-3 text-black border border-l-4 border-t-0 border-b-0 border-r-0 border-[#9301fe] pl-3 font-semibold">Refer &amp; Earn</h2>
-            <div className="shadow-[0_5px_15px_rgba(0,0,0,0.05)] rounded-2xl hover:-translate-y-1.25 hover:shadow-[0_10px_25px_rgba(0,0,0,0.1)] border border-[#f3f4f6] overflow-hidden transition-shadow duration-200">
-                <ReferEarnCard />
-                <SocialIcons />
-            </div>
-        </section>
-
+        
     </main>
   )
 }

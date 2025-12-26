@@ -4,8 +4,10 @@ import { useProfile } from "../context/ProfileContext";
 
 export const useDailyCheckIn = () => {
   const { refetchProfile } = useProfile(); 
-  const [loading, setLoading] = useState(false)
-  const claimDailyReward = async () => {
+  const [loading, setLoading] = useState(false);
+  const [showSuccessModal, setShowSuccessModal]= useState(false);
+
+  const claimDailyPoints = async () => {
     setLoading(true)
     const { error } = await supabase.rpc('check_in_daily_streak')
 
@@ -15,12 +17,13 @@ export const useDailyCheckIn = () => {
       return
     }
 
-  // Refetches user profile so UI updates
+  // Refetches user profile so UI updates current state of points and streak
     await refetchProfile();
     setLoading(false)
+    setShowSuccessModal(true) //pops up modal on successful check in
     
 }
 
 
-  return { claimDailyReward, loading }
+  return { claimDailyPoints, loading, showSuccessModal, setShowSuccessModal }
 }
