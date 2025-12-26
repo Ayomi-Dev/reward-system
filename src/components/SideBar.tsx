@@ -1,15 +1,34 @@
-import { Compass, CreditCard, Gem, HomeIcon, Layers3,  PackageOpen, UserCog,  } from 'lucide-react';
+import { Compass, CreditCard, Gem, HomeIcon, Layers3,  PackageOpen, UserCog, X,  } from 'lucide-react';
 import Logo from '../assets/flowva_logo-xVpZI3-U.png';
 
 
-const SideBar = () => {
+const SideBar = ({isSidebarOpen, toggleSideBar }:
+     {
+        isSidebarOpen: boolean,
+        toggleSideBar: () => void
+    }) => {
   return (
-    <aside className="w-72 hidden overflow-x-hidden md:flex flex-col h-screen bg-white shadow-md border-r border-black/10 text-black font-sans">
-        <div className="flex flex-col h-full">
+    <aside className={`
+        fixed 
+        top-0 left-0
+        h-screen w-72 md:w-60
+        bg-white shadow-md border-r border-black/10
+        text-black font-sans
+        transform transition-transform duration-300 ease-in-out
+        z-50
+        ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}
+        lg:translate-x-0
+        flex
+  `}
+    >
+        <div className="flex flex-col h-full relative">
+            <button className="absolute top-2 md:hidden block -right-9" onClick={toggleSideBar}>
+                <X className='w-6 h-6' />
+            </button>
             <div className=" p-2 px-7 my-2 flex justify-start">
                 <img src={Logo} alt="Flowva Logo" className="h-15" />
             </div>
-            <nav className="grow px-4 ">
+            <nav className="grow px-4 "> 
                 <ul>
                     <li className="flex items-center gap-3 px-4 p-3 mb-2 rounded-lg cursor-pointer  duration-200 transition-all text-black hover:bg-[rgba(144,19,254,0.1)] hover:text-[#9013FE]">
                         <HomeIcon className='w-4 h-4 text-black font-bold stroke-current' />

@@ -2,7 +2,7 @@ import { Layers, X } from 'lucide-react'
 
 const ShareStackModal = ({toggleStackShareModal}: {toggleStackShareModal: ()=> void}) => {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40" onClick={toggleStackShareModal}>
       <div className="w-95 rounded-2xl bg-white p-6 relative text-center shadow-xl animate-scaleIn">
 
         <h1 className="text-2xl font-bold">

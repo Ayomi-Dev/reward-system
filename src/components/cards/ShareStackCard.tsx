@@ -19,7 +19,7 @@ export function ShareStackCard( { toggleStackShareModal } : { toggleStackShareMo
         <div className="flex gap-4 p-3 items-center font-medium">
             <p>Share your stack</p>
             <button className="flex items-center gap-2 px-4 py-2 rounded-full text-sm bg-purple-100
-             text-[#9013fe] hover:text-white font-medium hover:bg-[#9013fe] transition"
+             text-[#9013fe] hover:text-white font-medium hover:bg-[#9013fe] transition cursor-pointer"
               onClick={toggleStackShareModal}
              >
                 <Share2 />
