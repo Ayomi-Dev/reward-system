@@ -12,6 +12,7 @@ export function DailyStreakCard( {checkIn} : { checkIn: () => Promise<void>}) {
   const { loading } = useDailyCheckIn()
   const { profile } = useProfile();
   const checkedInToday = profile?.last_checkin === today //controls button state to disable if user already checks in
+  // console.log(profile.last_checkin, today)
   
   
   return (

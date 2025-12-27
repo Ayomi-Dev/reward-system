@@ -61,18 +61,10 @@ This project recreates the **Rewards page** of the Flowva platform with a focus 
 ## UI Decisions
 
 - Matched spacing, colors, typography, and iconography to the provided design
-- Reward icons treated as images (not SVG icons) to match visual style
+- Reward icons treated as images and unicode characters (not SVG icons) to match visual style
 - Loading, empty, and error states handled explicitly
 
 ---
-
-## Assumptions & Trade-Offs
-
-- Rewards unlock automatically but redemption is not triggered by UI clicks
-  (matches observed platform behavior)
-- Icons are referenced via stored image paths instead of embedded SVGs
-- Backend enforces all reward logic for security and data integrity
-
 
 ## Assumptions Made
 

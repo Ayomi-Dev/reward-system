@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import SideBar from "./components/SideBar"
 import { useAuth } from "./context/AuthContext"
 import { RewardPage } from "./pages/RewardPage"
-import LoginPage from "./components/AuthForm";
+import AuthForm from "./components/AuthForm";
 
 function App() {
 
@@ -47,7 +47,7 @@ function App() {
           <RewardPage toggleSideBar={toggleSideBar} />
         </main>
        : 
-        <LoginPage />}
+        <AuthForm />}
       
     </div>
   )

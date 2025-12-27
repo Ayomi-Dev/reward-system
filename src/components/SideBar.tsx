@@ -18,17 +18,17 @@ const SideBar = ({isSidebarOpen, toggleSideBar }:
 
   return (
     <aside className={`
-        fixed 
-        top-0 left-0
-        h-screen w-72 md:w-60
-        bg-white shadow-md border-r border-black/10
-        text-black font-sans
-        transform transition-transform duration-300 ease-in-out
-        z-50
-        ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}
-        lg:translate-x-0
-        flex
-  `}
+      fixed 
+      top-0 left-0
+      h-screen w-72 md:w-60
+      bg-white shadow-md border-r border-black/10
+      text-black font-sans
+      transform transition-transform duration-300 ease-in-out
+      z-50
+      ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}
+      lg:translate-x-0
+      flex overflow-auto
+    `}
     >
         <div className="flex flex-col h-full relative">
             <button className="absolute top-2 md:hidden block -right-9" onClick={toggleSideBar}>
