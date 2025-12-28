@@ -11,7 +11,7 @@ const RewardSection = () => {
   ];
 
   return (
-    <section className="w-full">
+    <section className="w-full overflow-hidden">
       <h2 className="text-lg md:text-2xl my-3 text-black border-l-4 border-[#9301fe] pl-3 font-semibold">
         Redeem Your Points
       </h2>
@@ -20,7 +20,7 @@ const RewardSection = () => {
         className="
           gap-2 pb-2 w-100 md:w-full h-13
           overflow-x-auto whitespace-nowrap
-          hide-scrollbar flex border border-red-500
+          hide-scrollbar flex
         "
       >      
         {tabs.map(tab => (
@@ -57,7 +57,7 @@ const RewardSection = () => {
                }
             `}
           >
-            <div className="flex items-center justify-center h-full w-full gap-4">
+            <div className="flex items-center justify-center h-full gap-4">
               {tab.label}
               <span className={`text-sm rounded-full flex items-center justify-center w-5 h-5
                   ${filter === tab.key ? "bg-purple-200 text-purple-700" : "bg-gray-200 text-gray-500"}
