@@ -16,7 +16,7 @@ const RewardSection = () => {
         Redeem Your Points
       </h2>
 
-      <div
+      {/* <div
         className="
           gap-2 pb-2 w-100 md:w-full h-13
           overflow-x-auto whitespace-nowrap
@@ -69,7 +69,7 @@ const RewardSection = () => {
           </div>
         ))}
 
-      </div>
+      </div> */}
 
       <div className="grid gap-6 grid-cols-[repeat(auto-fill,minmax(300px,1fr))] mt-6 ">
         {filteredRewards.map(reward => (
