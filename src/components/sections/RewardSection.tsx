@@ -11,16 +11,16 @@ const RewardSection = () => {
   ];
 
   return (
-    <section className="w-full overflow-hidden">
+    <section className="w-full">
       <h2 className="text-lg md:text-2xl my-3 text-black border-l-4 border-[#9301fe] pl-3 font-semibold">
         Redeem Your Points
       </h2>
 
       <div
         className="
-          pb-2 max-w-[70%] relative
+          gap-2 pb-2 h-13 max-w-100 sm:max-w-full
           overflow-x-auto whitespace-nowrap
-          hide-scrollbar
+          hide-scrollbar flex
         "
       >      
         {tabs.map(tab => (
@@ -29,9 +29,9 @@ const RewardSection = () => {
             onClick={() => setFilter(tab.key)}
             className={`
               relative cursor-pointer
-              h-13 w-30 mx-2
-              inline-block gap-2 
-              hover:rounded-t-2xl
+              h-full px-4
+              inline-block gap-2
+              shrink-0 min-w-fit hover:rounded-t-2xl
               whitespace-nowrap hover:bg-purple-50
               transition-colors duration-300
               ${

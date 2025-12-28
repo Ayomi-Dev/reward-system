@@ -32,7 +32,7 @@ function App() {
 
 
   return(
-    <div className="flex flex-col relative md:flex-row min-h-screen w-full border border-blue-500">
+    <div className="flex flex-col relative md:flex-row min-h-screen w-full">
       {isSidebarOpen && (
         <div
           className="fixed inset-0 z-40 bg-black/40 md:hidden"
