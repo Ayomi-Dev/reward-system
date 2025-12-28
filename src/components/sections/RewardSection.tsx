@@ -2,8 +2,13 @@ import { useRewards } from "../../hooks/useRewards";
 import RewardCard from "../cards/RewardCard";
 
 const RewardSection = () => {
-  const { filteredRewards,  } = useRewards();
- 
+  const { filteredRewards, filter, setFilter, rewardCounts } = useRewards();
+  const tabs: { key: typeof filter; label: string }[] = [ //transforms filter keys/values into user-friendly labels for tab display
+    { key: "all", label: "All Rewards" },
+    { key: "unlocked", label: "Unlocked" },
+    { key: "locked", label: "Locked" },
+    { key: "coming-soon", label: "Coming Soon" },
+  ];
 
   return (
     <section className="w-full overflow-hidden">
@@ -11,11 +16,11 @@ const RewardSection = () => {
         Redeem Your Points
       </h2>
 
-      {/* <div
+      <div
         className="
-          gap-2 pb-2 w-100 md:w-full h-13
+          pb-2 w-100 md:w-full h-13
           overflow-x-auto whitespace-nowrap
-          hide-scrollbar flex
+          hide-scrollbar
         "
       >      
         {tabs.map(tab => (
@@ -24,9 +29,9 @@ const RewardSection = () => {
             onClick={() => setFilter(tab.key)}
             className={`
               relative cursor-pointer
-              h-full px-4
-              inline-block gap-2
-              shrink-0 min-w-fit hover:rounded-t-2xl
+              h-full px-4 mx-2
+              inline-block gap-2  border border-red-500
+              hover:rounded-t-2xl
               whitespace-nowrap hover:bg-purple-50
               transition-colors duration-300
               ${
@@ -64,7 +69,7 @@ const RewardSection = () => {
           </div>
         ))}
 
-      </div> */}
+      </div>
 
       <div className="grid gap-6 grid-cols-[repeat(auto-fill,minmax(300px,1fr))] mt-6 ">
         {filteredRewards.map(reward => (
