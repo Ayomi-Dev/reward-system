@@ -18,7 +18,7 @@ const RewardSection = () => {
 
       <div
         className="
-          pb-2 w-100 md:w-full h-13
+          pb-2 max-w-[70%] relative
           overflow-x-auto whitespace-nowrap
           hide-scrollbar
         "
@@ -29,8 +29,8 @@ const RewardSection = () => {
             onClick={() => setFilter(tab.key)}
             className={`
               relative cursor-pointer
-              h-full px-4 mx-2
-              inline-block gap-2  border border-red-500
+              h-13 w-30 mx-2
+              inline-block gap-2 
               hover:rounded-t-2xl
               whitespace-nowrap hover:bg-purple-50
               transition-colors duration-300
