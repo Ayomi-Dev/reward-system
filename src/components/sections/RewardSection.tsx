@@ -13,14 +13,14 @@ const RewardSection = () => {
   return (
     <section className="w-full">
       <h2 className="text-lg md:text-2xl my-3 text-black border-l-4 border-[#9301fe] pl-3 font-semibold">
-        Redeem Your Points <a href="">reload</a>
+        Redeem Your Points
       </h2>
 
       <div
         className="
           gap-2 pb-2 w-100 md:w-full h-13
           overflow-x-auto whitespace-nowrap
-          hide-scrollbar flex
+          hide-scrollbar flex border border-red-500
         "
       >      
         {tabs.map(tab => (
