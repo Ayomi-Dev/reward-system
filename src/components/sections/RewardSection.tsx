@@ -13,34 +13,65 @@ const RewardSection = () => {
   return (
     <section className="w-full">
       <h2 className="text-lg md:text-2xl my-3 text-black border-l-4 border-[#9301fe] pl-3 font-semibold">
-        Redeem Your Points
+        Redeem Your Points <a href="">reload</a>
       </h2>
 
-      <div className="flex items-center gap-4 pb-4">
-      {tabs.map(tab => (
-        <div 
-          key={tab.key}
-           className={`cursor-pointer px-4 py-3 rounded-t-xl flex gap-2 ${
-            filter === tab.key
-            ? "text-[#9301fe] bg-purple-50 border-b-3 border-[#9301fe]"
-            : "text-gray-500"
-          }`}
-          onClick={() => setFilter(tab.key)}
-         
-        >
-          <span>
-            {tab.label}
-          </span>
-          <span className={`text-xs rounded-full w-5 h-5 flex justify-center items-center bg-[#9031fe]/10 font-semibold 
-            ${tab.key !== filter ? "bg-gray-100 text-gray-300": ""}`
-          }>
-            {rewardCounts[tab.key]}
-          </span>
-        </div>
-      ))}
+      <div
+        className="
+          gap-2 pb-2 w-100 md:w-full h-13
+          overflow-x-auto whitespace-nowrap
+          hide-scrollbar flex
+        "
+      >      
+        {tabs.map(tab => (
+          <div
+            key={tab.key}
+            onClick={() => setFilter(tab.key)}
+            className={`
+              relative cursor-pointer
+              h-full px-4
+              inline-block gap-2
+              shrink-0 min-w-fit hover:rounded-t-2xl
+              whitespace-nowrap hover:bg-purple-50
+              transition-colors duration-300
+              ${
+                filter === tab.key
+                  ? "text-[#9301fe] bg-purple-50 rounded-t-2xl"
+                  : "text-gray-500 hover:text-gray-700"
+               }        
+              before:content-['']
+              before:absolute
+              before:left-0
+              before:-bottom-1
+              before:h-0.75
+              before:w-full
+              before:bg-[#9301fe]
+              before:rounded-full
+              before:origin-left
+              before:transition-transform
+              before:duration-300
+               ${
+                 filter === tab.key
+                   ? "before:scale-x-100"
+                   : "before:scale-x-0"
+               }
+            `}
+          >
+            <div className="flex items-center justify-center h-full w-full gap-4">
+              {tab.label}
+              <span className={`text-sm rounded-full flex items-center justify-center w-5 h-5
+                  ${filter === tab.key ? "bg-purple-200 text-purple-700" : "bg-gray-200 text-gray-500"}
+                `}>
+                {rewardCounts[tab.key]}
+              </span>
+
+            </div>
+          </div>
+        ))}
+
       </div>
 
-      <div className="grid gap-6 w-full grid-cols-[repeat(auto-fit,minmax(300px,1fr))] mt-6 items-stretch ">
+      <div className="grid gap-6 grid-cols-[repeat(auto-fill,minmax(300px,1fr))] mt-6 ">
         {filteredRewards.map(reward => (
           <RewardCard key={reward.id} reward={reward} />
         ))}

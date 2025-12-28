@@ -7,10 +7,14 @@ export function DailyStreakCard( {checkIn} : { checkIn: () => Promise<void>}) {
   const { profile } = useProfile();
   const days = ['M','T','W','T','F','S','S']
   const todayIndex = (new Date().getDay() + 6) % 7 
-  const today = new Date().toISOString().split('T')[0] //converts date to Y-M-D Format
+  const today = new Date().toISOString().split('T')[0] //converts current date to Y-M-D Format
   const [loading, setLoading] = useState(false)
   const checkedInToday = profile?.last_checkin === today //controls button state to disable if user already checks in
-  
+  const lastCheckin = new Date(`${profile?.last_checkin}T00:00:00`);  //sets lastcheckin day to midnight time of that day
+  const currentDay = new Date().setHours(0, 0, 0, 0); //sets time to midnight of the current day
+  const diffInDaysLastCheckin = (currentDay - lastCheckin.getTime()) / (1000 * 60 * 60 * 24) >= 2
+  console.log(diffInDaysLastCheckin)
+
   const claimPoints = async() => {
       setLoading(true);
       await checkIn();
