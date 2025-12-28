@@ -4,6 +4,8 @@ import { useProfile } from "../../context/ProfileContext";
 export function PointsBalanceCard() {
   const { profile } = useProfile();
   const goal = 5000;
+  const star = "\u{2B50}";
+
 
   return (
     <div className="bg-[#F7F8FC] border shadow-[0_5px_15px_rgba(0,0,0,0.05)] transition-all 
@@ -20,7 +22,7 @@ export function PointsBalanceCard() {
           {profile?.points ?? 0}
         </span>
         <div className="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center">
-          ⭐
+          {star}
         </div>
       </div>
 

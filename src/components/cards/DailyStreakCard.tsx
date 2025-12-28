@@ -1,19 +1,21 @@
 import {  CalendarCheck, CloudLightningIcon } from "lucide-react";
 import { useProfile } from "../../context/ProfileContext";
-import { useDailyCheckIn } from "../../hooks/useClaimDailyRewards";
+import { useState } from "react";
 
 
 export function DailyStreakCard( {checkIn} : { checkIn: () => Promise<void>}) {
-  const days = ['M','T','W','T','F','S','S']
-  const todayIndex = (new Date().getDay() + 6) % 7 // Monday = 0
-  const today = new Date().toISOString().split('T')[0] //converts date to Y-M-D Format
-  
- 
-  const { loading } = useDailyCheckIn()
   const { profile } = useProfile();
+  const days = ['M','T','W','T','F','S','S']
+  const todayIndex = (new Date().getDay() + 6) % 7 
+  const today = new Date().toISOString().split('T')[0] //converts date to Y-M-D Format
+  const [loading, setLoading] = useState(false)
   const checkedInToday = profile?.last_checkin === today //controls button state to disable if user already checks in
-  // console.log(profile.last_checkin, today)
   
+  const claimPoints = async() => {
+      setLoading(true);
+      await checkIn();
+      setLoading(false);
+  }
   
   return (
      <div className="bg-[#F7F8FC] border shadow-[0_5px_15px_rgba(0,0,0,0.05)] transition-all 
@@ -49,11 +51,11 @@ export function DailyStreakCard( {checkIn} : { checkIn: () => Promise<void>}) {
         </p>
 
       <div className="px-4 py-3 flex items-center justify-center">
-        <button className={`mt-4 flex gap-2 justify-center items-center w-full py-2 rounded-full text-white bg-[#930ef1] text-sm font-medium 
+        <button className={`mt-4 flex gap-2 justify-center items-center w-full py-2 rounded-full text-sm font-medium 
         ${checkedInToday
         ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-        : 'bg-primary text-white cursor-pointer'}` }
-          onClick={checkIn} disabled={checkedInToday}
+        : 'bg-[#930ef1] text-white cursor-pointer'}` }
+          onClick={claimPoints} disabled={checkedInToday}
         >
           {loading ? "" : <CloudLightningIcon className="w-6 h-6" />  }
           

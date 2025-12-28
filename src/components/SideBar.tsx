@@ -80,7 +80,7 @@ const SideBar = ({isSidebarOpen, toggleSideBar }:
     >
       <div className="w-10 h-10 relative overflow-hidden rounded-full mr-3 flex items-center justify-center bg-[#E9D4FF]">
         <img
-          src="https://lh3.googleusercontent.com/a/ACg8ocJWQIppfHgr7DzPTups58ZiJ-ipXRTnzJnTWwHLBPcVedW0gQ=s96-c"
+          src={Logo}
           alt="User avatar"
           className="h-full w-full rounded-full object-cover"
         />

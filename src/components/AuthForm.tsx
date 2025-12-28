@@ -21,6 +21,8 @@ export default function AuthForm() {
       await signIn(email, password)
       :
       await signUp(email, password, confirmPassword)
+
+      setLoading(false)
   }
 
   return (
