@@ -2,13 +2,8 @@ import { useRewards } from "../../hooks/useRewards";
 import RewardCard from "../cards/RewardCard";
 
 const RewardSection = () => {
-  const { filteredRewards, filter, setFilter, rewardCounts } = useRewards();
-  const tabs: { key: typeof filter; label: string }[] = [ //transforms filter keys/values into user-friendly labels for tab display
-    { key: "all", label: "All Rewards" },
-    { key: "unlocked", label: "Unlocked" },
-    { key: "locked", label: "Locked" },
-    { key: "coming-soon", label: "Coming Soon" },
-  ];
+  const { filteredRewards,  } = useRewards();
+ 
 
   return (
     <section className="w-full overflow-hidden">
