@@ -17,6 +17,7 @@ export const useRewards = () => {
     const { data, error } = await supabase
       .from("rewards")
       .select("*")
+      .order("icon", {ascending: false})
 
     if (error) {
       console.error("Error fetching rewards:", error.message);
