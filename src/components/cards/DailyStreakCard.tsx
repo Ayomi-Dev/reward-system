@@ -10,10 +10,9 @@ export function DailyStreakCard( {checkIn} : { checkIn: () => Promise<void>}) {
   const today = new Date().toISOString().split('T')[0] //converts current date to Y-M-D Format
   const [loading, setLoading] = useState(false)
   const checkedInToday = profile?.last_checkin === today //controls button state to disable if user already checks in
-  const lastCheckin = new Date(`${profile?.last_checkin}T00:00:00`);  //sets lastcheckin day to midnight time of that day
-  const currentDay = new Date().setHours(0, 0, 0, 0); //sets time to midnight of the current day
-  const diffInDaysLastCheckin = (currentDay - lastCheckin.getTime()) / (1000 * 60 * 60 * 24) >= 2
-  console.log(diffInDaysLastCheckin)
+  const lastCheckin = new Date(`${profile?.last_checkin}T00:00:00`);  //sets user's lastcheckin day to midnight time of that day
+  const currentDay = new Date().setHours(0, 0, 0, 0); //sets current time to midnight of the current day
+  const diffInDaysLastCheckin = (currentDay - lastCheckin.getTime()) / (1000 * 60 * 60 * 24) >= 2 //checks if last checkin was 2 or more days ago
 
   const claimPoints = async() => {
       setLoading(true);
@@ -32,7 +31,7 @@ export function DailyStreakCard( {checkIn} : { checkIn: () => Promise<void>}) {
       </div>
 
       <h2 className="mt-4 text-4xl font-bold px-4 text-purple-600">
-        {profile?.streak} day
+        {diffInDaysLastCheckin ? 0 : profile?.streak} day
       </h2>
 
       <div className="mt-4 px-4 flex items-center justify-center gap-2">

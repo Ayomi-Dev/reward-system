@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { signIn, signUp } from "../lib/auth";
 import ButtonSpinner from "../utils/ButtonSpinner";
+import { CircleAlert } from "lucide-react";
 
 export default function AuthForm() {
   const [email, setEmail] = useState("")
@@ -10,6 +11,7 @@ export default function AuthForm() {
   const [isLogin, setIsLogin] = useState(true);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [ error, setError ] = useState<string | null>(null)
 
   const buttonText = loading ? isLogin ? "Signing In...": "Signing Up..." : isLogin ? "Sign In" : "Sign Up Account";
 
@@ -17,12 +19,29 @@ export default function AuthForm() {
   const signInUser = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true)
-    isLogin ? 
-      await signIn(email, password)
-      :
-      await signUp(email, password, confirmPassword)
+   
 
-      setLoading(false)
+    if( isLogin ) {
+      const result = await signIn(email, password)
+      if( result.error ) {
+        setError((result.error as any).message || "Invalid email and/or password.")
+        setLoading(false)
+        setTimeout(() => {
+          setError("")
+        }, 2000);
+      }
+    }
+    else{
+      const result = await signUp(email, password, confirmPassword)
+      if( result.error) {
+        setError((result.error as any).message || "An error occured while signing up, try again.")
+        setLoading(false)
+        setTimeout(() => {
+          setError("")
+        }, 2000);
+      }
+    }
+
   }
 
   return (
@@ -35,6 +54,12 @@ export default function AuthForm() {
         <p className="text-center text-gray-500 text-sm mt-2">
           {isLogin ? "Log in to receive personalized recommendations" : "Sign up to manage your tools"}
         </p>
+
+        {error &&   
+          <p className="text-red-500 px-4 py-2 rounded-md bg-red-50 my-4">
+            <CircleAlert className="inline text-red-500 w-4 h-4" />   {error}
+          </p>
+        }
 
         
         <form className="mt-6 space-y-5" onSubmit={signInUser}>
@@ -164,6 +189,7 @@ export default function AuthForm() {
         }
           
         </p>
+
       </div>
     </div>
   );
