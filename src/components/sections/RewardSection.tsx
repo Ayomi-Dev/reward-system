@@ -19,7 +19,7 @@ const RewardSection = () => {
       <div
         className="
           gap-2 pb-2 h-13 max-w-100 sm:max-w-full
-          overflow-x-auto whitespace-nowrap
+          overflow-hidden whitespace-nowrap
           hide-scrollbar flex
         "
       >      

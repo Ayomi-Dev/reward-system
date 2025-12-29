@@ -14,10 +14,9 @@ export function DailyStreakCard( {checkIn} : { checkIn: () => Promise<void>}) {
   const currentDay = new Date().setHours(0, 0, 0, 0); //sets current time to midnight of the current day
   const diffInDaysLastCheckin = (currentDay - lastCheckin.getTime()) / (1000 * 60 * 60 * 24) >= 2 //checks if last checkin was 2 or more days ago
 
-  const claimPoints = async() => {
+  const claimPoints = async() => { 
       setLoading(true);
-      await checkIn();
-      setLoading(false);
+      await checkIn().then(() => setLoading(false) );
   }
   
   return (
