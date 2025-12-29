@@ -10,11 +10,11 @@ const RewardCard = ({ reward }: { reward: any}) => {
 
   const icon = rewardIcons[reward?.icon] || "\u{1F381}"
   return (
-    <div className={`border opacity-[0.7]  border-[#E9D4FF]
+    <div className={`border border-[#E9D4FF]
     bg-white rounded-xl p-6 shadow-[0_2px_8px_rgba(0,0,0,0.05)]
     relative overflow-hidden transition-all duration-200 ease-linear
     hover:-translate-y-1.25 hover:shadow-[0_6px_16px_rgba(0,0,0,0.1)]
-    flex flex-col ${reward.status === "unlocked" ? "cursor-pointer" :  "cursor-not-allowed"}`}
+    flex flex-col ${reward.status === "unlocked" ? "cursor-pointer" :  "cursor-not-allowed opacity-[0.7]"}`}
     >
         <div className="w-12 h-12 rounded-xl flex items-center justify-center m-[0_auto_1rem] text-[1.5rem] text-[#9013fe] bg-[#E9D4FF]">
             {icon}
