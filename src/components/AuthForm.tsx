@@ -16,7 +16,7 @@ export default function AuthForm() {
   const buttonText = loading ? isLogin ? "Signing In...": "Signing Up..." : isLogin ? "Sign In" : "Sign Up Account";
 
 
-  const signInUser = async (e: React.FormEvent) => {
+  const AuthUser = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true)
    
@@ -62,7 +62,7 @@ export default function AuthForm() {
         }
 
         
-        <form className="mt-6 space-y-5" onSubmit={signInUser}>
+        <form className="mt-6 space-y-5" onSubmit={AuthUser}>
           <div>
             <label className="text-sm font-medium text-gray-700">
               Email

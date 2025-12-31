@@ -20,7 +20,7 @@ const SideBar = ({isSidebarOpen, toggleSideBar }:
     <aside className={`
       fixed 
       top-0 left-0
-      h-screen w-72 md:w-60
+      h-full w-72 md:w-60
       bg-white shadow-md border-r border-black/10
       text-black font-sans
       transform transition-transform duration-300 ease-in-out

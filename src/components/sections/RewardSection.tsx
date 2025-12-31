@@ -11,7 +11,7 @@ const RewardSection = () => {
   ];
 
   return (
-    <section className="w-full">
+    <section className="w-full py-3">
       <h2 className="text-lg md:text-2xl my-3 text-black border-l-4 border-[#9301fe] pl-3 font-semibold">
         Redeem Your Points
       </h2>

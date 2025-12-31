@@ -13,7 +13,6 @@ const ProfileModal = () => {
           <li className="px-4 py-2 text-sm cursor-pointer hover:bg-gray-100">
             Support
           </li>
-          <li className="my-1 border-t border-gray-200" />
           <li className="px-4 py-2 text-sm cursor-pointer text-red-600 hover:bg-red-50" onClick={signOutUser}>
             Logout
           </li>

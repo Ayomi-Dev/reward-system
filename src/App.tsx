@@ -16,15 +16,16 @@ function App() {
   useEffect(() => { //Locks body scroll when sidebar opens
   
     if (isSidebarOpen) {
-    document.body.style.overflow = "hidden";
-  } else {
-    document.body.style.overflow = "";
-  }
+      document.body.style.overflow = "hidden";
+    } 
+    else {
+      document.body.style.overflow = "";
+    }
 
-  return () => {
-    document.body.style.overflow = "";
-  };
-}, [isSidebarOpen]);
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isSidebarOpen]);
 
 
   if (loading) return <p>Loading...</p>
@@ -42,10 +43,10 @@ function App() {
     
 
       {user ? 
-        <main className="flex w-full">
+        <div className="flex w-full relative min-h-screen">
           <SideBar isSidebarOpen={isSidebarOpen} toggleSideBar={toggleSideBar} />
           <RewardPage toggleSideBar={toggleSideBar} />
-        </main>
+        </div>
        : 
         <AuthForm />}
       

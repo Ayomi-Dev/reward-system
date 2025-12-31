@@ -25,9 +25,9 @@ export const RewardPage = ({ toggleSideBar} : { toggleSideBar: () => void}) => {
     }
 
   return (
-    <section className="relative bg-gray-50 flex-1 lg:ml-60">
+    <main className="relative bg-gray-50 flex-1 md:ml-60">
         <TopBar  toggleSideBar={toggleSideBar}/>
-        <div className="px-5 lg:px-8 overflow-hidden">
+        <div className="px-5 lg:px-8">
             <p className="text-gray-600 block md:hidden py-2">Earn points, unlock rewards, and celebrate your progress!</p>
             <div className="flex items-center gap-4 pb-4">
                 <span className={`${ tab === "earn" ? "text-[#9301fe] bg-purple-50 border-b-3 border-[#9301fe]" : "text-gray-500" } py-3 px-4 rounded-t-xl cursor-pointer transition-all duration-400`}
@@ -47,7 +47,7 @@ export const RewardPage = ({ toggleSideBar} : { toggleSideBar: () => void}) => {
                 <RewardSection /> 
             :
             tab === "earn" && 
-                <div className="block">
+                <div className="w-full">
                     <EarnPointsSection checkIn={claimDailyPoints} />
                     <EarnMorePointsSection showStackModal={showStackModal} toggleStackShareModal={toggleStackShareModal} />
                     <ReferralSection />
@@ -61,6 +61,6 @@ export const RewardPage = ({ toggleSideBar} : { toggleSideBar: () => void}) => {
             { showStackModal && <ShareStackModal toggleStackShareModal={toggleStackShareModal} />}
 
         </div>
-    </section>
+    </main>
   )
 }
