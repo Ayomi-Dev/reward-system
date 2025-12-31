@@ -25,28 +25,28 @@ export const RewardPage = ({ toggleSideBar} : { toggleSideBar: () => void}) => {
     }
 
   return (
-    <main className="relative bg-gray-50 flex-1 md:ml-60">
+    <main className="relative bg-gray-50 flex-1 md:ml-60 lg:px-10 px-5">
         <TopBar  toggleSideBar={toggleSideBar}/>
-        <div className="px-5 lg:px-8">
             <p className="text-gray-600 block md:hidden py-2">Earn points, unlock rewards, and celebrate your progress!</p>
-            <div className="flex items-center gap-4 pb-4">
-                <span className={`${ tab === "earn" ? "text-[#9301fe] bg-purple-50 border-b-3 border-[#9301fe]" : "text-gray-500" } py-3 px-4 rounded-t-xl cursor-pointer transition-all duration-400`}
+            <div className="flex items-center gap-4 py-4 w-full text-sm md:text-base">
+                <span className={`${ tab === "earn" ? "text-[#9301fe] bg-purple-50 border-b-3 border-[#9301fe]" : "text-gray-500" } py-2.5 px-4 rounded-t-xl cursor-pointer transition-all duration-400`}
                 onClick={() => handleTabClick("earn")}
                 >
                     Earn Points
                 </span>
-                <span className={`${ tab === "redeem" ? "text-[#9301fe] bg-purple-50 border-b-3 border-[#9301fe]" : "text-gray-500" } py-3 px-4 rounded-t-xl cursor-pointer transition-all duration-400`}
+                <span className={`${ tab === "redeem" ? "text-[#9301fe] bg-purple-50 border-b-3 border-[#9301fe]" : "text-gray-500" } py-2.5 px-4 rounded-t-xl cursor-pointer transition-all duration-400`}
                     onClick={() => handleTabClick("redeem")}
                 >
                     Redeem Rewards
                 </span>
             </div>
             
-            { tab === "redeem" ? 
-            
+            { tab === "redeem" && 
+             <div className="w-full">
                 <RewardSection /> 
-            :
-            tab === "earn" && 
+             </div>
+}
+            {tab === "earn" && 
                 <div className="w-full">
                     <EarnPointsSection checkIn={claimDailyPoints} />
                     <EarnMorePointsSection showStackModal={showStackModal} toggleStackShareModal={toggleStackShareModal} />
@@ -60,7 +60,6 @@ export const RewardPage = ({ toggleSideBar} : { toggleSideBar: () => void}) => {
 
             { showStackModal && <ShareStackModal toggleStackShareModal={toggleStackShareModal} />}
 
-        </div>
     </main>
   )
 }

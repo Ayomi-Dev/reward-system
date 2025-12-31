@@ -11,16 +11,16 @@ const RewardSection = () => {
   ];
 
   return (
-    <section className="w-full py-3">
+    <section className="w-full">
       <h2 className="text-lg md:text-2xl my-3 text-black border-l-4 border-[#9301fe] pl-3 font-semibold">
         Redeem Your Points
       </h2>
 
       <div
         className="
-          gap-2 pb-2 h-13 max-w-100 sm:max-w-full
+          gap-4 pb-2 h-13 max-w-70 sm:max-w-full
           overflow-x-auto whitespace-nowrap
-          hide-scrollbar flex
+          hide-scrollbar flex 
         "
       >      
         {tabs.map(tab => (
@@ -29,8 +29,8 @@ const RewardSection = () => {
             onClick={() => setFilter(tab.key)}
             className={`
               relative cursor-pointer
-              h-full px-4
-              inline-block gap-2
+              h-full
+              flex gap-2 items-center justify-center px-3
               shrink-0 min-w-fit hover:rounded-t-2xl
               whitespace-nowrap hover:bg-purple-50
               transition-colors duration-300
@@ -57,15 +57,13 @@ const RewardSection = () => {
                }
             `}
           >
-            <div className="flex items-center justify-center h-full gap-4">
-              {tab.label}
-              <span className={`text-sm rounded-full flex items-center justify-center w-5 h-5
-                  ${filter === tab.key ? "bg-purple-200 text-purple-700" : "bg-gray-200 text-gray-500"}
-                `}>
-                {rewardCounts[tab.key]}
-              </span>
+            <span>{tab.label}</span>
+            <span className={`text-sm rounded-full flex items-center justify-center w-5 h-5
+                ${filter === tab.key ? "bg-purple-200 text-purple-700" : "bg-gray-200 text-gray-500"}
+              `}>
+              {rewardCounts[tab.key]}
+            </span>
 
-            </div>
           </div>
         ))}
 

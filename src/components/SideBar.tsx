@@ -30,9 +30,9 @@ const SideBar = ({isSidebarOpen, toggleSideBar }:
       flex overflow-auto
     `}
     >
-      <div className="flex flex-col h-full relative">
-        <button className="absolute top-2 md:hidden block -right-9" onClick={toggleSideBar}>
-            <X className='w-6 h-6' />
+      <div className="flex flex-col h-full relative w-full">
+        <button className="absolute top-2 md:hidden block right-2" onClick={toggleSideBar}>
+            <X className='w-7 h-7' />
         </button>
         <div className=" p-2 px-7 my-2 flex justify-start">
             <img src={Logo} alt="Flowva Logo" className="h-15" />

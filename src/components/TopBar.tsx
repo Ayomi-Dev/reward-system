@@ -3,7 +3,7 @@ import { Bell, MenuIcon } from "lucide-react"
 const TopBar = ({toggleSideBar}: {toggleSideBar: () => void}) => {
   return (
     <section className="sticky top-0 z-10 bg-gray-50 pb-2 flex py-2 pt-10">
-        <div className="flex justify-between items-center w-full px-5 lg:px-8">
+        <div className="flex justify-between items-center w-full">
             <div className="block">
                 <div className="flex items-center gap-3">
                     <button className="lg:hidden" onClick={toggleSideBar}>
